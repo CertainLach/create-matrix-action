@@ -19,7 +19,7 @@ def main():
         groups = {}
         for match in matches:
             assert len(match) == 3
-            values = re.findall(r"([\w\-]+(?:\.[\d]+){0,2})+", match[2])
+            values = re.findall(r"[^;]+", match[2])
             assert len(values)
             groups[match[1]] = [{match[1]: value} for value in values]
         for value in product(*groups.values()):
